@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, View, Text } from 'react-native'
+import Paragraph from '../components/Paragraph.js'
 
 const contributorData = [
   [
@@ -52,10 +53,12 @@ const contributorData = [
   ]
 ]
 
+const paragraphs = ['This rulebook was produced by and for the use of the International Quidditch Association. The IQA would like to thank the following individuals who have contributed to its development, both past and present.', 'The IQA continues to the function at the expense of the time and effort of it volunteers across the world. This rulebook is consequently dedicated to their often unappreciated efforts.', 'Copyright © 2016 by the International Quidditch Association. All rights reserved. No part of this book may be used or reproduced in any manner whatsoever without written permission except in the case of brief quotations embodied in critical articles and reviews.', 'This book has not been written, prepared, approved, or licensed by Warner Bros, J.K. Rowling, or any of her publishers or licensees.', 'It does not imply or claim any rights to her characters or creations, nor are the authors, staff members, or the publisher in any way affiliated with Warner Bros, J.K.Rowling, or any of her publishers or licensees.']
+
 class CreditsScreen extends React.PureComponent {
   renderViewSections = (section, index) => {
     return (
-      <View key={`section-${index}`} style={{margin:10}}>
+      <View key={`section-${index}`} style={{margin:10, alignItems: 'center'}}>
         {section.map((name, index) => <Text key={`section-${index} item-${index}`}>{name}</Text>)}
       </View>
     )
@@ -63,11 +66,13 @@ class CreditsScreen extends React.PureComponent {
 
   render () {
     return (
-      <ScrollView>
-        <Text>
-          This rulebook was produced by and for the use of the International Quidditch Association. The IQA would like to thank the following individuals who have contributed to its development, both past and present.
-        </Text>
+      <ScrollView style={{padding:5}}>
+        <Paragraph innerText={paragraphs[0]} />
         {contributorData.map(this.renderViewSections)}
+        <Paragraph innerText={paragraphs[1]} />
+        <Paragraph innerText={paragraphs[2]} />
+        <Paragraph innerText={paragraphs[3]} />
+        <Paragraph innerText={paragraphs[4]} />
       </ScrollView>
     )
   }
