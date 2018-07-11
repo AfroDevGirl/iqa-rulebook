@@ -1,18 +1,19 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
 import HomeScreen from './screens/HomeScreen.js'
-import IntroScreen from './screens/IntroScreen.js'
-import CreditsScreen from './screens/CreditsScreen.js';
+import IntroScreen from './screens/IntroScreen'
+import CreditsScreen from './screens/CreditsScreen';
+import AboutScreen from './screens/AboutScreen';
 
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Intro: IntroScreen,
-    Credits: CreditsScreen
+    Credits: CreditsScreen,
+    About: AboutScreen
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'About',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#FFC02D'
