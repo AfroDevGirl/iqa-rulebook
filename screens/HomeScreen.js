@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
+import { createStackNavigator } from 'react-navigation'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,16 +11,16 @@ const styles = StyleSheet.create({
   },
 })
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home',
-    headerRight: (
-      <Button
-        onPress={() => alert('This is a button!')}
-        title='Nav'
-      />
-    )
-  }
+class HomeScreenView extends React.Component {
+  // static navigationOptions = {
+  //   title: 'Home',
+  //   headerRight: (
+  //     <Button
+  //       onPress={() => alert('This is a button!')}
+  //       title='Nav'
+  //     />
+  //   )
+  // }
 
   render() {
     return (
@@ -30,5 +31,21 @@ class HomeScreen extends React.Component {
     );
   }
 }
+
+const HomeScreen = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreenView
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      initialRouteName: 'Home',
+      headerMode: 'screen',
+      headerTitle: 'Home Screen',
+      drawerLabel: 'Home Drawer'
+    })
+  }
+)
 
 export default HomeScreen

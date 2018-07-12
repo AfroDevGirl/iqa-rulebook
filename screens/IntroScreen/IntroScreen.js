@@ -1,9 +1,18 @@
 import React from 'react'
 import { StyleSheet, ScrollView, Text } from 'react-native'
 import Paragraph from '../../components/Paragraph.js'
+import SectionHeader from '../../components/SectionHeader.js'
 import introDetails from './data.js'
+import { createStackNavigator } from 'react-navigation'
 
-class IntroScreen extends React.Component {
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    paddingVertical: 20
+  },
+})
+
+class IntroScreenView extends React.Component {
   static navigationOptions = {
     title: 'Intro'
   }
@@ -14,21 +23,30 @@ class IntroScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-        <Text>{'introduction'.toLocaleUpperCase()}</Text>
+      <ScrollView
+        alwaysBounceVertical={true}
+        contentContainerStyle={styles.container}>
+        <SectionHeader innerText={'Introduction'} />
         {introDetails.map(this.renderIntroParagraphs)}
       </ScrollView>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const IntroScreen = createStackNavigator(
+  {
+    Intro: {
+      screen: IntroScreenView
+    }
   },
-})
+  {
+    navigationOptions: ({ navigation }) => ({
+      initialRouteName: 'Intro',
+      headerMode: 'screen',
+      headerTitle: 'Intro Screen',
+      drawerLabel: 'Intro Drawer'
+    })
+  }
+)
 
 export default IntroScreen

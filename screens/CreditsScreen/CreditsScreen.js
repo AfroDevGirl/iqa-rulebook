@@ -2,8 +2,13 @@ import React from 'react'
 import { ScrollView, View, Text } from 'react-native'
 import Paragraph from '../../components/Paragraph.js'
 import { contributorData, creditsParagraphs } from './data.js'
+import { createStackNavigator } from 'react-navigation'
 
-class CreditsScreen extends React.PureComponent {
+class CreditsScreenView extends React.PureComponent {
+  // static navigationOptions = {
+  //   title: 'Credits'
+  // }
+
   renderViewSections = (section, index) => {
     return (
       <View key={`section-${index}`} style={{margin:10, alignItems: 'center'}}>
@@ -26,4 +31,19 @@ class CreditsScreen extends React.PureComponent {
   }
 }
 
+const CreditsScreen = createStackNavigator(
+  {
+    Credits: {
+      screen: CreditsScreenView
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      initialRouteName: 'Credits',
+      headerMode: 'screen',
+      headerTitle: 'Credits Screen',
+      drawerLabel: 'Credits Drawer'
+    })
+  }
+)
 export default CreditsScreen
