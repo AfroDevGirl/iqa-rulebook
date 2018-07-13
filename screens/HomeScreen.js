@@ -11,22 +11,18 @@ const styles = StyleSheet.create({
   },
 })
 
-class HomeScreenView extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Home',
-  //   headerRight: (
-  //     <Button
-  //       onPress={() => alert('This is a button!')}
-  //       title='Nav'
-  //     />
-  //   )
-  // }
-
+export class HomeScreenView extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Welcome to the IQA rulebook!</Text>
-        <Button title='Credits' onPress={() => this.props.navigation.navigate('Credits')} />
+        <Text>
+          Welcome to the International Quidditch Association rulebook! Click on one of the following buttons to
+          learn more about the rules of quidditch, who has contributed to this rulebook over the years, and how the
+          IQA serves its constituents
+        </Text>
+        <Button title='Introduction to Quidditch' onPress={() => this.props.navigation.navigate('Intro')} />
+        <Button title='Contributors' onPress={() => this.props.navigation.navigate('Credits')} />
+        <Button title='About the IQA' onPress={() => this.props.navigation.navigate('About')} />
       </View>
     );
   }
@@ -43,7 +39,10 @@ const HomeScreen = createStackNavigator(
       initialRouteName: 'Home',
       headerMode: 'screen',
       headerTitle: 'Home Screen',
-      drawerLabel: 'Home Drawer'
+      drawerLabel: 'Home Drawer',
+      headerRight: (
+        <Button onPress={() => navigation.goBack()} title='Back To Home' />
+      )
     })
   }
 )

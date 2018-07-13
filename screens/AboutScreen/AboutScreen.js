@@ -1,12 +1,12 @@
 import React from 'react'
-import { ScrollView, View, Text, StyleSheet } from 'react-native'
+import { ScrollView, View, Text, StyleSheet, Button } from 'react-native'
 import _ from 'lodash'
 import aboutDetails from './data.js'
 import Paragraph from '../../components/Paragraph.js'
 import SectionHeader from '../../components/SectionHeader.js'
 import { createStackNavigator } from 'react-navigation'
 
-class AboutScreenView extends React.PureComponent {
+export class AboutScreenView extends React.PureComponent {
   renderParagraph = (paragraph, index) => <Paragraph key={`paragraph-${index}`} innerText={paragraph} />
 
   renderSection = (section) => {
@@ -41,7 +41,10 @@ const AboutScreen = createStackNavigator(
       initialRouteName: 'About',
       headerMode: 'screen',
       headerTitle: 'About Screen',
-      drawerLabel: 'About Drawer'
+      drawerLabel: 'About Drawer',
+      headerRight: (
+        <Button onPress={() => navigation.navigate('Home')} title='Back To Home' />
+      )
     })
   }
 )

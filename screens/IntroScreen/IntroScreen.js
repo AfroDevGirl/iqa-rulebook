@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, ScrollView, Text } from 'react-native'
+import { StyleSheet, ScrollView, Text, Button } from 'react-native'
 import Paragraph from '../../components/Paragraph.js'
 import SectionHeader from '../../components/SectionHeader.js'
 import introDetails from './data.js'
@@ -12,11 +12,7 @@ const styles = StyleSheet.create({
   },
 })
 
-class IntroScreenView extends React.Component {
-  static navigationOptions = {
-    title: 'Intro'
-  }
-
+export class IntroScreenView extends React.Component {
   renderIntroParagraphs = (paragraph, index) => {
     return <Paragraph key={`paragraph-${index}`} innerText={paragraph} />
   }
@@ -44,7 +40,10 @@ const IntroScreen = createStackNavigator(
       initialRouteName: 'Intro',
       headerMode: 'screen',
       headerTitle: 'Intro Screen',
-      drawerLabel: 'Intro Drawer'
+      drawerLabel: 'Intro Drawer',
+      headerRight: (
+        <Button onPress={() => navigation.navigate('Home')} title='Back To Home' />
+      )
     })
   }
 )
