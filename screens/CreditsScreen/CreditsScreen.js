@@ -4,7 +4,7 @@ import Paragraph from '../../components/Paragraph.js'
 import { contributorData, creditsParagraphs } from './data.js'
 import { createStackNavigator } from 'react-navigation'
 
-export class CreditsScreenView extends React.PureComponent {
+class CreditsScreen extends React.PureComponent {
   renderViewSections = (section, index) => {
     return (
       <View key={`section-${index}`} style={{margin:10, alignItems: 'center'}}>
@@ -15,7 +15,7 @@ export class CreditsScreenView extends React.PureComponent {
 
   render () {
     return (
-      <ScrollView style={{padding:5}}>
+      <ScrollView style={{padding:5, backgroundColor: '#ffffff'}}>
         <Paragraph innerText={creditsParagraphs.paragraph1} />
         {contributorData.map(this.renderViewSections)}
         <Paragraph innerText={creditsParagraphs.paragraph2} />
@@ -27,22 +27,4 @@ export class CreditsScreenView extends React.PureComponent {
   }
 }
 
-const CreditsScreen = createStackNavigator(
-  {
-    Credits: {
-      screen: CreditsScreenView
-    }
-  },
-  {
-    navigationOptions: ({ navigation }) => ({
-      initialRouteName: 'Credits',
-      headerMode: 'screen',
-      headerTitle: 'Credits Screen',
-      drawerLabel: 'Credits Drawer',
-      headerRight: (
-        <Button onPress={() => navigation.navigate('Home')} title='Back To Home' />
-      )
-    })
-  }
-)
 export default CreditsScreen

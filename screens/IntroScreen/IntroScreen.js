@@ -7,12 +7,12 @@ import { createStackNavigator } from 'react-navigation'
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 20
   },
 })
 
-export class IntroScreenView extends React.Component {
+class IntroScreen extends React.Component {
   renderIntroParagraphs = (paragraph, index) => {
     return <Paragraph key={`paragraph-${index}`} innerText={paragraph} />
   }
@@ -28,24 +28,5 @@ export class IntroScreenView extends React.Component {
     )
   }
 }
-
-const IntroScreen = createStackNavigator(
-  {
-    Intro: {
-      screen: IntroScreenView
-    }
-  },
-  {
-    navigationOptions: ({ navigation }) => ({
-      initialRouteName: 'Intro',
-      headerMode: 'screen',
-      headerTitle: 'Intro Screen',
-      drawerLabel: 'Intro Drawer',
-      headerRight: (
-        <Button onPress={() => navigation.navigate('Home')} title='Back To Home' />
-      )
-    })
-  }
-)
 
 export default IntroScreen

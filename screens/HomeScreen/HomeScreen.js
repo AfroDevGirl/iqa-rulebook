@@ -1,6 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
+import IntroScreen from '../IntroScreen'
+import CreditsScreen from '../CreditsScreen'
+import AboutScreen from '../AboutScreen'
+import Paragraph from '../../components/Paragraph.js'
+import mainParagraph from './data.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -15,11 +20,7 @@ export class HomeScreenView extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          Welcome to the International Quidditch Association rulebook! Click on one of the following buttons to
-          learn more about the rules of quidditch, who has contributed to this rulebook over the years, and how the
-          IQA serves its constituents
-        </Text>
+        <Paragraph innerText={mainParagraph} />
         <Button title='Introduction to Quidditch' onPress={() => this.props.navigation.navigate('Intro')} />
         <Button title='Contributors' onPress={() => this.props.navigation.navigate('Credits')} />
         <Button title='About the IQA' onPress={() => this.props.navigation.navigate('About')} />
@@ -30,20 +31,17 @@ export class HomeScreenView extends React.Component {
 
 const HomeScreen = createStackNavigator(
   {
-    Home: {
-      screen: HomeScreenView
-    }
+    Home: { screen: HomeScreenView },
+    Intro: IntroScreen,
+    Credits: CreditsScreen,
+    About: AboutScreen
   },
   {
     navigationOptions: ({ navigation }) => ({
       initialRouteName: 'Home',
-      headerMode: 'screen',
-      headerTitle: 'Home Screen',
-      drawerLabel: 'Home Drawer',
-      headerRight: (
-        <Button onPress={() => navigation.goBack()} title='Back To Home' />
-      )
-    })
+      headerMode: 'screen'
+    }),
+    order: []
   }
 )
 

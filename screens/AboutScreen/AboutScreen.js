@@ -6,7 +6,7 @@ import Paragraph from '../../components/Paragraph.js'
 import SectionHeader from '../../components/SectionHeader.js'
 import { createStackNavigator } from 'react-navigation'
 
-export class AboutScreenView extends React.PureComponent {
+class AboutScreen extends React.PureComponent {
   renderParagraph = (paragraph, index) => <Paragraph key={`paragraph-${index}`} innerText={paragraph} />
 
   renderSection = (section) => {
@@ -23,30 +23,30 @@ export class AboutScreenView extends React.PureComponent {
 
   render () {
     return (
-      <ScrollView>
+      <ScrollView style={{padding:5, backgroundColor: '#ffffff'}}>
         {Object.entries(aboutDetails).map(this.renderSection)}
       </ScrollView>
     )
   }
 }
 
-const AboutScreen = createStackNavigator(
-  {
-    About: {
-      screen: AboutScreenView
-    }
-  },
-  {
-    navigationOptions: ({ navigation }) => ({
-      initialRouteName: 'About',
-      headerMode: 'screen',
-      headerTitle: 'About Screen',
-      drawerLabel: 'About Drawer',
-      headerRight: (
-        <Button onPress={() => navigation.navigate('Home')} title='Back To Home' />
-      )
-    })
-  }
-)
+// const AboutScreen = createStackNavigator(
+//   {
+//     About: {
+//       screen: AboutScreenView
+//     }
+//   },
+//   {
+//     navigationOptions: ({ navigation }) => ({
+//       initialRouteName: 'About',
+//       headerMode: 'screen',
+//       headerTitle: 'About Screen',
+//       drawerLabel: 'About Drawer',
+//       headerRight: (
+//         <Button onPress={() => navigation.navigate('Home')} title='Back To Home' />
+//       )
+//     })
+//   }
+// )
 
 export default AboutScreen

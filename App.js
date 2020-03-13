@@ -1,25 +1,23 @@
 import React from 'react'
-import { createDrawerNavigator } from 'react-navigation'
-import HomeScreen from './screens/HomeScreen.js'
-import IntroScreen from './screens/IntroScreen'
-import CreditsScreen from './screens/CreditsScreen';
-import AboutScreen from './screens/AboutScreen';
+import { createBottomTabNavigator } from 'react-navigation'
+import HomeScreen from './screens/HomeScreen'
+import RulesScreen from './screens/RulesScreen'
 
-const RootStack = createDrawerNavigator(
+const RootStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
-    Intro: IntroScreen,
-    Credits: CreditsScreen,
-    About: AboutScreen
+    Rules: RulesScreen
   },
   {
     initialRouteName: 'Home',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#FFC02D'
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
+    order: ['Home', 'Rules'],
+    tabBarOptions: {
+      activeBackgroundColor: '#F9B004',
+      inactiveBackgroundColor: '#FFC02D',
+      labelStyle: {
+        fontSize: 14,
+        padding: 12,
+        color: '#000000',
         fontWeight: 'bold'
       }
     }
